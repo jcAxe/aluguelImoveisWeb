@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="{% static 'aluguel/css/styles.css' %}" rel="stylesheet" type="text/css"  />
+
+    <title>Title</title>
+</head>
+<body>
+    {{ frase }}
+    <br>
+    <a href="{% url 'aluguel:index' %}">Voltar</a>
+</body>
+</html>
