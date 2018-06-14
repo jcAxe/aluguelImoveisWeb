@@ -1,16 +1,15 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
+
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
 
-    <link href="{% static 'aluguel/css/styles.css' %}" rel="stylesheet" type="text/css"  />
-    <title>Title</title>
-</head>
-<body>
-    {{ frase }}!
-    <img src="{% static 'aluguel/images/dice.png' %}" alt="Dado">
+{% block titulo %}Aluguel de Imoveis{% endblock %}
 
+{% block conteudo %}
+
+    <br>
     <a href="{% url 'aluguel:pagina1' %}">Página 1</a>
-</body>
-</html>
+    <br>
+    {{ frase }}
+    <br>
+    <img src="{% static 'aluguel/images/dice.png' %}" alt="Dado">
+{% endblock %}

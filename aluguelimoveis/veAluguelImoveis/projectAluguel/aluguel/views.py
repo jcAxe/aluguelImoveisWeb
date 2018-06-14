@@ -13,3 +13,6 @@ def index(request):
 def pagina1(request):
     frase = "Você está na página 1"
     return render(request, 'aluguel/pagina1.html', {'frase': frase})
+def about(request):
+
+    return render(request, 'aluguel/about.html')
