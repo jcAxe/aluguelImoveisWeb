@@ -17,7 +17,7 @@
                     <div class="col-sm-3">
                         <h2>Categorias</h2>
                         <ul class="nav nav-pills nav-stacked">
-                            <li {% if not categoria %}class="active"{% endif %}>
+                            <li {% if not categoria %}{% if not proximidade %}class="active"{% endif %}{% endif %}>
                                 <a href="{% url 'aluguel:lista_imoveis' %}">Todos</a>
                             </li>
                             {% for c in categorias %}
@@ -25,13 +25,17 @@
                                     <a href="{{ c.get_absolute_path }}">{{ c.nome }}</a>
                                 </li>
                             {% endfor %}
+                             <li {% if proximidade %}class="active"{% endif %}>
+                                    <a href="{% url 'aluguel:lista_proximidade' %}">Listar por proximidade</a>
+                             </li>
 
                         </ul>
                     </div>
 
                     <div class="col-sm-9">
-                        <h2>{% if not categoria %}Imoveis{% else %}{{ categoria.nome }}{% endif %}</h2>
+                        <h2>{% if not categoria %}{% if not proximidade %}Imoveis{% else %}Proximidade{% endif %}{% else %}{{ categoria.nome }}{% endif %}</h2>
                         <div class="row">
+                            {% if not proximidade %}
                             {% for imovel in imoveis %}
                                 <div class="col-md-4 col-sm-6">
                                     <div class="thumbnail">
@@ -48,6 +52,19 @@
                                     </div>
                                 </div>
                             {% endfor %}
+                            {% else %}
+                                <div class="col-md-4 col-sm-6">
+                                    <div class="thumbnail">
+                                        <form action="/latitude/" method="post">
+                                            {% csrf_token %}
+                                            {{ form }}
+                                            <input type="submit" value="Submit" />
+                                        </form>
+
+                                    </div>
+                                </div>
+
+                            {% endif %}
                         </div>
 
 
