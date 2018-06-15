@@ -39,7 +39,9 @@ class Imovel(models.Model):
     endereco = models.TextField(blank=True)
 
     class Meta:
-        ordering = ('-data_cadastramento',)
+        ordering = ('cidade',)
+        verbose_name = 'imovel'
+        verbose_name_plural = 'imoveis'
 
     def cadastrado_recentemente(self):
         return self.data_cadastramento >= timezone.now() - datetime.timedelta(days=1)
