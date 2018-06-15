@@ -14,11 +14,11 @@ class Categoria(models.Model):
         verbose_name = 'categoria'
         verbose_name_plural = 'categorias'
 
-#    def __str__(self):
-#        return self.nome
+    def __str__(self):
+        return self.nome
 
 class Imovel(models.Model):
-    categoria = models.ForeignKey(Categoria)
+    categoria = models.ForeignKey(Categoria, related_name='imoveis')
     #nome = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=200, db_index=True)
     imagem = models.ImageField(upload_to='imoveis', blank=True)
@@ -32,6 +32,7 @@ class Imovel(models.Model):
     cidade = models.CharField(max_length=200, db_index=True)
     estado = models.CharField(max_length=200, db_index=True)
     pais = models.CharField(max_length=200, db_index=True)
+    cep = models.CharField(max_length=200, db_index=True)
     disponivel = models.BooleanField(default=True)
     data_cadastramento = models.DateTimeField(auto_now_add=True)
     data_atualizacao = models.DateTimeField(auto_now=True)
