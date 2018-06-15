@@ -11,8 +11,8 @@
     {% block titulo %}titulo default{% endblock %}
 
     <!-- Bootstrap -->
-    <link href="{% static 'aluguel/css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'aluguel/css/styles.css' %}" rel="stylesheet">
+    <link href="{% static 'projectbase/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'projectbase/css/styles.css' %}" rel="stylesheet">
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -32,13 +32,15 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="{% url 'aluguel:index' %}">Aluguel de Imoveis</a>
+				<a class="navbar-brand" href="{% url 'projectbase:index' %}">Aluguel de Imoveis</a>
 
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="{% url 'aluguel:index' %}">Home</a></li>
-					<li> <a href="{% url 'aluguel:about' %}">Sobre</a></li>
+					<li class="active"><a href="{% url 'projectbase:index' %}">Home</a></li>
+					<li> <a href="{% url 'aluguel:lista_imoveis' %}">Alugar Imoveis</a></li>
+
+					<li> <a href="{% url 'projectbase:about' %}">Sobre</a></li>
 
 				</ul>
 
@@ -74,6 +76,6 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{% static 'aluguel/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'projectbase/js/bootstrap.min.js' %}"></script>
   </body>
 </html>

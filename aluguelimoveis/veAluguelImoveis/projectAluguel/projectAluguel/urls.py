@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from aluguel import views as aluguelViews
 
 urlpatterns = [
+    url(r'^', include('projectbase.urls', namespace="projectbase")),
     url(r'^aluguel/', include('aluguel.urls',namespace="aluguel")),
     url(r'^admin/', admin.site.urls),
 ]
