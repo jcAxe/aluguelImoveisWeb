@@ -1,4 +1,7 @@
 from .forms import EnderecoForm
+import googlemaps
+
+
 from django.shortcuts import render
 
 # Create your views here.
@@ -55,12 +58,33 @@ def busca_proximidade(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = EnderecoForm(request.POST)
+        imoveis = Imovel.objects.filter(disponivel=True)
+        imoveisProximos = []
+
         # check whether it's valid:
         if form.is_valid():
             # process the data in form.cleaned_data as required
             # ...
             # redirect to a new URL:
-            return HttpResponseRedirect('/thanks/')
+            endereco = form.cleaned_data['endereco']
+            #AIzaSyCAvoQ71ulU2zlKfea1QfARc7aQlzVLCfo
+            gmaps = googlemaps.Client("AIzaSyCAvoQ71ulU2zlKfea1QfARc7aQlzVLCfo")
+            geocode = gmaps.geocode(endereco)
+
+            latitude = geocode[0]['geometry']['location']['lat']
+            longitude = geocode[0]['geometry']['location']['lng']
+            for imovel in imoveis:
+                geocodeImovel = gmaps.geocode(imovel.endereco)
+                imovelLat = geocodeImovel[0]['geometry']['location']['lat']
+                imovelLon = geocodeImovel[0]['geometry']['location']['lng']
+                if((abs(latitude-imovelLat)< 0.1)and (abs(longitude-imovelLon)< 0.1)):
+                    imoveisProximos.append(imovel)
+
+
+
+            #print(lng)
+            print(imoveisProximos)
+
 
     # if a GET (or any other method) we'll create a blank form
     else:
@@ -71,7 +95,8 @@ def busca_proximidade(request):
                                                          'imoveis': imoveis,
                                                          'categoria': categoria,
                                                          'proximidade': proximidade,
-                                                         'endereco': endereco}
+                                                         'endereco': endereco,
+                                                         'imoveisProximos':imoveisProximos}
                   )
 
 
