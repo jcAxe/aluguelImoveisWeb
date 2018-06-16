@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'aluguel',
+    'projectbase',
 ]
 
 MIDDLEWARE = [
@@ -124,5 +125,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
+USE_THOUSAND_SEPARATOR = True
 
 STATIC_URL = '/static/'

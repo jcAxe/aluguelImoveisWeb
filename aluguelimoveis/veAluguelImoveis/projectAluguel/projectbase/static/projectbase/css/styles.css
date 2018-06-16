@@ -1,0 +1,55 @@
+.navbar-text > a{
+	color: white;
+	text-decoration: none;
+}
+
+
+div .jumbotron{
+	background-color: white;
+}
+div > a.btn.btn-success{
+	text-decoration: underline;
+	background-color: #2bf04c;
+	color: black;
+
+	margin-bottom:10px;
+}
+
+div .col-sm-6 > div.thumbnail {
+	border-width: 4px;
+	border-color: white;
+}
+a.thumbnail{
+	background-color:black;
+	border-color: black;
+}
+
+div .thumbnail{
+	background-color:orange;
+	border-color: orange;
+}
+
+
+a.thumbnail:hover{
+	background-color:orange;
+	border-color: black;
+}
+.home-thumb img:hover{
+	background-color:white;
+	transform: scale(1.2);
+
+}
+.thumbnail img{
+	background-color:orange;
+	border-color: black;
+	transform: all 0.3s ease 0s;
+
+}
+body {
+	padding-top: 30px;
+	padding-bottom: 70px;
+	background-color: white;
+}
+div .jumbotron > h1{
+	color: black;
+}

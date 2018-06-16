@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block titulo %}
+    {{ imovel.nome }}
+{% endblock %}
+
+{% block conteudo %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <a href="#">
+                    <img class="img-rounded img-responsive center-block" src="{% static imovel.imagem %}">
+                </a>
+            </div>
+            <div class="col-sm-9">
+                <h2>{{ imovel.nome }}</h2>
+                <h3><a href="{{ imovel.categoria.get_absolute_path }}">{{ imovel.categoria.nome }}</a></h3>
+                <p>{{imovel.preco}}</p>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
