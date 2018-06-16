@@ -26,7 +26,7 @@
                                 </li>
                             {% endfor %}
                              <li {% if proximidade %}class="active"{% endif %}>
-                                    <a href="{% url 'aluguel:lista_proximidade' %}">Listar por proximidade</a>
+                                    <a href="{% url 'aluguel:proximidade' %}">Listar por proximidade</a>
                              </li>
 
                         </ul>
@@ -55,10 +55,10 @@
                             {% else %}
                                 <div class="col-md-4 col-sm-6">
                                     <div class="thumbnail">
-                                        <form action="/latitude/" method="post">
-                                            {% csrf_token %}
-                                            {{ form }}
-                                            <input type="submit" value="Submit" />
+                                        <form action="{% url 'aluguel:busca_proximidade' %}" method="post">
+                                                {% csrf_token %}
+                                                {{ form }}
+                                            <input type="submit" value="OK">
                                         </form>
 
                                     </div>

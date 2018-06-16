@@ -1,8 +1,8 @@
-from aluguel.forms import ContactForm
+from .forms import EnderecoForm
 from django.shortcuts import render
 
 # Create your views here.
-#from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 
 
 from django.shortcuts import render, get_object_or_404
@@ -28,28 +28,54 @@ def lista_proximidade(request):
     longitude = None
     categoria = None
     proximidade = True
+    endereco = None
     categorias = Categoria.objects.all()
     imoveis = Imovel.objects.filter(disponivel=True)
-    if request.method == 'POST':  # If the form has been submitted...
-        form = ContactForm(request.POST)  # A form bound to the POST data
-        if form.is_valid():  # All validation rules pass
-            # Process the data in form.cleaned_data
-            # ...
+    form = EnderecoForm()  # A form bound to the POST data
 
-            print
-            form.cleaned_data['formLatitude']
-            form.cleaned_data['formLongitude']
-            #return HttpResponseRedirect('/thanks/')  # Redirect after POST
-    else:
-        form = ContactForm()  # An unbound form
-        pass
 
     return render(request, 'aluguel/imovel/lista.html', {'categorias': categorias,
                                                          'imoveis': imoveis,
                                                          'categoria': categoria,
                                                          'proximidade':proximidade,
                                                          'latitude': latitude,
-                                                         'longitude': longitude})
+                                                         'longitude': longitude,
+                                                         'endereco':endereco,
+                                                         'form':form})
+
+
+def busca_proximidade(request):
+    categoria = None
+    proximidade = True
+    endereco = None
+    categorias = Categoria.objects.all()
+    imoveis = Imovel.objects.filter(disponivel=True)
+
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = EnderecoForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            # ...
+            # redirect to a new URL:
+            return HttpResponseRedirect('/thanks/')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = EnderecoForm()
+
+    return render(request, 'aluguel/imovel/lista.html', {'form': form,
+                                                         'categorias': categorias,
+                                                         'imoveis': imoveis,
+                                                         'categoria': categoria,
+                                                         'proximidade': proximidade,
+                                                         'endereco': endereco}
+                  )
+
+
+
 def exibe_imovel(request, id, slug_do_imovel):
     # Esta view espera receber o id do produto e seu slug para recuperar o produto
     # Podemos recuperar o produto apenas com o seu id uma vez que ele é unique.
@@ -57,6 +83,7 @@ def exibe_imovel(request, id, slug_do_imovel):
     # SEO = Search Engine Optimization.
     # Exemplo: http://www.dominio.com.br/produto?id=721 <== Ruim
     # Exemplo: http://www.dominio.com.br/721/notebook-del-vostro-3458-i3 <== Bom
+
     imovel = get_object_or_404(Imovel, id=id, slug=slug_do_imovel, disponivel=True)
     return render(
         request, 'aluguel/imovel/exibe.html', {'imovel': imovel})
