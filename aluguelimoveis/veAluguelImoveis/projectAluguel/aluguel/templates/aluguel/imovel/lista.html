@@ -53,19 +53,38 @@
                                 </div>
                             {% endfor %}
                             {% else %}
-                                <div class="col-md-4 col-sm-6">
-                                    <div class="thumbnail">
-                                        <form action="{% url 'aluguel:busca_proximidade' %}" method="post">
-                                                {% csrf_token %}
-                                                {{ form }}
-                                            <input type="submit" value="OK">
-                                        </form>
+                            <div>
+                                <form action="{% url 'aluguel:busca_proximidade' %}" method="post">
+                                        {% csrf_token %}
+                                        {{ form }}
+                                    <input type="submit" value="OK">
+                                </form>
+                            </div>
 
-                                    </div>
-                                </div>
+
+                                        {% if endereco %}
+                                        {% for imovel in imoveisProximos %}
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="thumbnail">
+                                                    <a href="{{ imovel.get_absolute_path }}">
+                                                        <img class="img-circle img-responsive center-block"
+                                                             src="{% static imovel.imagem %}" height="220" width="150">
+                                                    </a>
+                                                    <div class="caption">
+                                                        <h4><a href="{{ imovel.get_absolute_path }}">{{ imovel.endereco }}</a></h4>
+                                                        R$ {{ imovel.preco }}
+                                                        <br>
+                                                        <br>
+                                                    </div>
+                                                </div>
+                                        </div>
+
+                                        {% endfor %}
+                                        {% endif %}
+
 
                             {% endif %}
-                        </div>
+
 
 
 

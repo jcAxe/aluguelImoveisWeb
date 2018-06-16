@@ -51,6 +51,7 @@ def busca_proximidade(request):
     categoria = None
     proximidade = True
     endereco = None
+
     categorias = Categoria.objects.all()
     imoveis = Imovel.objects.filter(disponivel=True)
 
