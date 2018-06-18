@@ -27,6 +27,7 @@ a.thumbnail{
 div .thumbnail{
 	background-color:orange;
 	border-color: orange;
+	
 }
 
 
@@ -37,6 +38,7 @@ a.thumbnail:hover{
 .home-thumb img:hover{
 	background-color:white;
 	transform: scale(1.2);
+
 
 }
 .thumbnail img{
