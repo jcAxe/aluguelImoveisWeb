@@ -121,6 +121,7 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+ENV_PATH = os.path.abspath(os.path.dirname(__file__))
 
 
 # Static files (CSS, JavaScript, Images)
@@ -128,3 +129,7 @@ USE_TZ = True
 USE_THOUSAND_SEPARATOR = True
 
 STATIC_URL = '/static/'
+
+#MEDIA_ROOT='/aluguel/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(ENV_PATH, 'media/')

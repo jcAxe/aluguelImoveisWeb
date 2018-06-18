@@ -1,4 +1,4 @@
-from .forms import EnderecoForm
+from .forms import EnderecoForm, ImovelForm
 import googlemaps
 
 
@@ -113,3 +113,4 @@ def exibe_imovel(request, id, slug_do_imovel):
     imovel = get_object_or_404(Imovel, id=id, slug=slug_do_imovel, disponivel=True)
     return render(
         request, 'aluguel/imovel/exibe.html', {'imovel': imovel})
+
