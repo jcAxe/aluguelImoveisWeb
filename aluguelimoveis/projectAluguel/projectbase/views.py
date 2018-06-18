@@ -55,8 +55,12 @@ def registrar_imovel(request):
             #     pais = pais,
             #     cep = cep,
             #     endereco = endereco)
-            return HttpResponseRedirect(reverse('projectbase:index'))
+            return HttpResponseRedirect(reverse('projectbase:sucesso_registro'))
     else:
         form = ImovelForm()
 
     return render(request, 'projectbase/registrar.html', {'form': form})
+
+def sucesso_registro(request):
+
+    return render(request, 'projectbase/registroSucesso.html')
