@@ -2,8 +2,6 @@ from django.db import models
 import datetime
 from django.utils import timezone
 from django.core.urlresolvers import reverse
-import PIL
-
 
 class Categoria(models.Model):
     nome = models.CharField(max_length=200, db_index=True)
@@ -22,16 +20,8 @@ class Categoria(models.Model):
 
 class Imovel(models.Model):
     categoria = models.ForeignKey(Categoria, related_name='imoveis')
-    #nome = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=200, db_index=True)
-    # if categoria.__str__() == "Casa":
-    #     imagem = models.ImageField(upload_to='images/casa', blank=False)
-    # elif categoria.__str__()== "Apartamento":
-    #     imagem = models.ImageField(upload_to='images/apts', blank=False)
-    # else:
-    #
     imagem = models.ImageField(upload_to='aluguel/images/apts', blank=False)
-    #imagem = models.TextField(upload_to='imoveis', blank=True)
     descricao = models.TextField(blank=True)
     dono = models.TextField(blank=True)
     preco = models.DecimalField(max_digits=10, decimal_places=2)

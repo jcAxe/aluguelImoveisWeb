@@ -1,6 +1,5 @@
 from django.conf.urls import url
 from . import views
-import aluguel
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),

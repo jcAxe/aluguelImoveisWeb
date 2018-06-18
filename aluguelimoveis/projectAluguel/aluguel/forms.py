@@ -1,5 +1,5 @@
 from django import forms
-from aluguel.models import Categoria, Imovel
+from aluguel.models import Imovel
 
 class EnderecoForm(forms.Form):
     endereco = forms.CharField(label="Endereço",required=True)

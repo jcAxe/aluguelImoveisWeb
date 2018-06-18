@@ -36,58 +36,49 @@
                         <h2>{% if not categoria %}{% if not proximidade %}Imoveis{% else %}Proximidade{% endif %}{% else %}{{ categoria.nome }}{% endif %}</h2>
                         <div class="row">
                             {% if not proximidade %}
-                            {% for imovel in imoveis %}
-                                <div class="col-md-4 col-sm-6">
-                                    <div class="thumbnail">
-                                        <a href="{{ imovel.get_absolute_path }}">
-                                            <img class="img-circle img-responsive center-block"
-                                                 src="{{imovel.imagem.url}}" height="220" width="150">
-                                        </a>
-                                        <div class="caption">
-                                            <h4><a href="{{ imovel.get_absolute_path }}">{{ imovel.endereco }}</a></h4>
-                                            R$ {{ imovel.preco }}
-                                            <br>
-                                            <br>
+                                {% for imovel in imoveis %}
+                                    <div class="col-md-4 col-sm-6">
+                                        <div class="thumbnail">
+                                            <a href="{{ imovel.get_absolute_path }}">
+                                                <img class="img-circle img-responsive center-block"
+                                                     src="{{imovel.imagem.url}}" height="220" width="150">
+                                            </a>
+                                            <div class="caption">
+                                                <h4><a href="{{ imovel.get_absolute_path }}">{{ imovel.endereco }}</a></h4>
+                                                R$ {{ imovel.preco }}
+                                                <br>
+                                                <br>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            {% endfor %}
+                                {% endfor %}
                             {% else %}
                             <div>
                                 <form action="{% url 'aluguel:busca_proximidade' %}" method="post">
-                                        {% csrf_token %}
-                                        {{ form }}
+                                    {% csrf_token %}
+                                    {{ form }}
                                     <input type="submit" value="OK">
                                 </form>
                             </div>
-
-
-                                        {% if endereco %}
-                                        {% for imovel in imoveisProximos %}
-                                            <div class="col-md-4 col-sm-6">
-                                                <div class="thumbnail">
-                                                    <a href="{{ imovel.get_absolute_path }}">
-                                                        <img class="img-circle img-responsive center-block"
-                                                             src="{{imovel.imagem.url}}" height="220" width="150">
-                                                    </a>
-                                                    <div class="caption">
-                                                        <h4><a href="{{ imovel.get_absolute_path }}">{{ imovel.endereco }}</a></h4>
-                                                        R$ {{ imovel.preco }}
-                                                        <br>
-                                                        <br>
-                                                    </div>
+                                {% if endereco %}
+                                    {% for imovel in imoveisProximos %}
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="thumbnail">
+                                                <a href="{{ imovel.get_absolute_path }}">
+                                                    <img class="img-circle img-responsive center-block"
+                                                         src="{{imovel.imagem.url}}" height="220" width="150">
+                                                </a>
+                                                <div class="caption">
+                                                    <h4><a href="{{ imovel.get_absolute_path }}">{{ imovel.endereco }}</a></h4>
+                                                    R$ {{ imovel.preco }}
+                                                    <br>
+                                                    <br>
                                                 </div>
+                                            </div>
                                         </div>
-
-                                        {% endfor %}
-                                        {% endif %}
-
-
+                                    {% endfor %}
+                                {% endif %}
                             {% endif %}
-
-
-
-
                         </div>
                     </div>
                 </div>

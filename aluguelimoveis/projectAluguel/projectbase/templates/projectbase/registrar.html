@@ -7,21 +7,16 @@
 		<div class="page-header">
 			<h1>Registrar imovel</h1>
 		</div>
-	
-
-		
 		<div class="col-sm-12">
-                    <form action="{% url 'projectbase:registrar_imovel' %}" method="post" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            <table border="1">
-                                {{ form}}
-                              </table>
-                        <input type="submit" value="OK">
-                    </form>
-                </div>
-
-
-		</div>
+            <form action="{% url 'projectbase:registrar_imovel' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <table border="1">
+                        {{ form}}
+                      </table>
+                <input type="submit" value="OK">
+            </form>
+        </div>
+    </div>
 
 	
 {%endblock%}
