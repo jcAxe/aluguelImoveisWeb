@@ -7,7 +7,7 @@ Este projeto é um sistema em Django que permite:
 	
 	
 
-#Navegando no projeto
+## Navegando no projeto
 
 As funcionalidades do projeto podem ser acessadas através de uma barra de navegação com quatro abas: Home, Alugar Imóveis, Registrar Imóvel e Sobre.
 	* Home: Dá acesso à página inicial do site.
@@ -38,7 +38,7 @@ Os endereços previamente cadastrados utilizados para teste são pontos de refer
 	 
 	 
 	 
-## Lógica da busca
+### Lógica da busca
 As buscas de endereços foram utilizadas pela biblioteca fornecida pelo GoogleMaps.
 Por simplicidade, o perímetro da busca é um quadrante cujo ponto médio dos lados do quadrante está a 0.1 graus de latitude e longitude do endereço buscado.
 Ou seja, o endereço buscado está no centro de um quadrado de 0.2 graus de latitude e longitude. Um lado de 0.2 graus corresponde à distância de aproximadamente 16 quilômetros.
@@ -46,7 +46,7 @@ Ou seja, o endereço buscado está no centro de um quadrado de 0.2 graus de lati
 
 
 	 
-#Dependências
+## Dependências
 
 O projeto foi realizado em Django com Python 3.6.2. 
 É aconselhável que seja criado um ambiente virtual para execução do projeto. 
@@ -57,7 +57,7 @@ Dito isto, com seu ambiente virtual ativado, a partir da pasta raiz do repositó
 Lembrando de verificar o divisor de diretórios correspondente do seu sistema operacional ('/' para o Linux, '\' Windows).
 
 
-#Executando o projeto
+## Executando o projeto
 
 Para rodar o projeto, é necessário executar o arquivo do projeto Django "manage.py". Para isso, execute a seguinte linha de comando a partir do diretório raiz do repositório:
 `python aluguelimoveis/projectAluguel/manage.py runserver`
@@ -66,6 +66,6 @@ Este comando iniciará o servidor na máquina local com a porta 8000 como padrã
 
 	
 	
-#Observação
+## Observação
 
 Dentre as informações obtidas para este projeto, vale mencionar que o estilo do conteúdo da página inicial foi pego diretamente de um template da [w3-schools](https://www.w3schools.com/w3css/tryw3css_templates_start_page.htm).
