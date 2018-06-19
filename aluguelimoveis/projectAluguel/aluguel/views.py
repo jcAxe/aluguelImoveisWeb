@@ -82,3 +82,10 @@ def exibe_imovel(request, id, slug_do_imovel):
     return render(
         request, 'aluguel/imovel/exibe.html', {'imovel': imovel})
 
+def sucesso_aluguel(request, id, slug_do_imovel):
+    imovel = get_object_or_404(Imovel, id=id, slug=slug_do_imovel, disponivel=True)
+    endereco = imovel.endereco
+    return render(
+        request, 'aluguel/imovel/sucessoAluguel.html', {'imovel': imovel,
+                                                        'endereco':endereco,
+                                                        })
