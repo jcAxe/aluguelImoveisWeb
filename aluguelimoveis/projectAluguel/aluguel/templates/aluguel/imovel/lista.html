@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block titulo %}
-    {% if not categoria %}Imoveis{% else %}{{ categoria.nome }}{% endif %}
+    <title>{% if not categoria %}Imoveis{% else %}{{ categoria.nome }}{% endif %}</title>
 {% endblock %}
 
 {% block conteudo %}
