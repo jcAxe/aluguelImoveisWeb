@@ -3,10 +3,21 @@
 	text-decoration: none;
 }
 
+h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+
+
+
 
 div .jumbotron{
 	background-color: white;
 }
+
+div .col-md-10{
+	padding-top: 20px;
+}
+
 div > a.btn.btn-success{
 	text-decoration: underline;
 	background-color: #2bf04c;
@@ -25,9 +36,9 @@ a.thumbnail{
 }
 
 div .thumbnail{
-	background-color:orange;
+	background-color:#deeaee;
 	border-color: orange;
-	
+    border-radius: 25px;
 }
 
 
@@ -38,7 +49,6 @@ a.thumbnail:hover{
 .home-thumb img:hover{
 	background-color:white;
 	transform: scale(1.2);
-
 
 }
 .thumbnail img{
