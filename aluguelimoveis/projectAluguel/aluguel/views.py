@@ -35,16 +35,16 @@ def busca_proximidade(request):
     categoria = None
     proximidade = True
     endereco = None
-
     categorias = Categoria.objects.all()
     imoveis = Imovel.objects.filter(disponivel=True)
-
+    buscou = False
     if request.method == 'POST':
         form = EnderecoForm(request.POST)
         imoveis = Imovel.objects.filter(disponivel=True)
         imoveisProximos = []
 
         if form.is_valid():
+            buscou = True
 
             endereco = form.cleaned_data['endereco']
             gmaps = googlemaps.Client("AIzaSyCAvoQ71ulU2zlKfea1QfARc7aQlzVLCfo")
@@ -52,6 +52,7 @@ def busca_proximidade(request):
 
             latitude = geocode[0]['geometry']['location']['lat']
             longitude = geocode[0]['geometry']['location']['lng']
+
             for imovel in imoveis:
                 geocodeImovel = gmaps.geocode(imovel.endereco)
                 imovelLat = geocodeImovel[0]['geometry']['location']['lat']
@@ -70,7 +71,8 @@ def busca_proximidade(request):
                                                          'categoria': categoria,
                                                          'proximidade': proximidade,
                                                          'endereco': endereco,
-                                                         'imoveisProximos':imoveisProximos}
+                                                         'imoveisProximos':imoveisProximos,
+                                                         'buscou':buscou}
                   )
 
 

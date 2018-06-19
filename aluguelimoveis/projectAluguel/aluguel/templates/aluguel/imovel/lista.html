@@ -78,10 +78,9 @@
                                         </div>
                                     {% endfor %}
                                 {%else%}
+                                    {% if buscou %}
                                         <div class="col-md-10">
                                             <div class="thumbnail">
-                                                <a href="{{ imovel.get_absolute_path }}">
-
                                                     <h1>Não há imoveis nas proximidades!</h1>
                                                     <br>
                                                     <h2>Tente buscar na região do Rio de Janeiro, Brasil.</h2>
@@ -90,7 +89,7 @@
                                                 </div>
                                             </div>
                                         </div>
-
+                                        {% endif %}
                                 {% endif %}
 
                             {% endif %}
