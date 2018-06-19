@@ -17,8 +17,6 @@ def lista_imoveis(request, slug_da_categoria=None):
                                                          'categoria': categoria,
                                                          'proximidade': proximidade})
 def lista_proximidade(request):
-    latitude = None
-    longitude = None
     categoria = None
     proximidade = True
     endereco = None
@@ -30,8 +28,6 @@ def lista_proximidade(request):
                                                          'imoveis': imoveis,
                                                          'categoria': categoria,
                                                          'proximidade':proximidade,
-                                                         'latitude': latitude,
-                                                         'longitude': longitude,
                                                          'endereco':endereco,
                                                          'form':form})
 
@@ -63,7 +59,6 @@ def busca_proximidade(request):
                 if((abs(latitude-imovelLat)< 0.1)and (abs(longitude-imovelLon)< 0.1)):
                     imoveisProximos.append(imovel)
 
-            print(imoveisProximos)
 
 
     else:
