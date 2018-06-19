@@ -3,7 +3,7 @@
 	text-decoration: none;
 }
 
-body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
 .fa-anchor,.fa-coffee {font-size:200px}
 
@@ -13,6 +13,11 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 div .jumbotron{
 	background-color: white;
 }
+
+div .col-md-10{
+	padding-top: 20px;
+}
+
 div > a.btn.btn-success{
 	text-decoration: underline;
 	background-color: #2bf04c;
