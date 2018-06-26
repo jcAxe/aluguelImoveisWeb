@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 import googlemaps
 
-from aluguel.models import Categoria, Imovel
+from aluguel.models import Categoria
+from aluguel.models import Imovel
 from aluguel.forms import EnderecoForm
 
 
