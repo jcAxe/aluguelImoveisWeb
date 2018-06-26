@@ -5,8 +5,8 @@ from django.core.urlresolvers import reverse
 from aluguel.forms import ImovelForm
 
 def index(request):
-    frase = "Olá mundo"
-    return render(request, 'projectbase/index.html', {'frase': frase})
+
+    return render(request, 'projectbase/index.html')
 
 
 def about(request):
