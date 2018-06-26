@@ -1,5 +1,7 @@
 from django.contrib import admin
-from .models import Categoria, Imovel
+
+from aluguel.models import Categoria
+from aluguel.models import Imovel
 
 class CategoriaAdmin(admin.ModelAdmin):
     list_display = ['nome', 'slug']

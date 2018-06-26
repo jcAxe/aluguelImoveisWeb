@@ -1,7 +1,10 @@
-from .forms import EnderecoForm
+from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 import googlemaps
-from django.shortcuts import render, get_object_or_404
-from .models import Categoria, Imovel
+
+from aluguel.models import Categoria, Imovel
+from aluguel.forms import EnderecoForm
+
 
 def lista_imoveis(request, slug_da_categoria=None):
     categoria = None
