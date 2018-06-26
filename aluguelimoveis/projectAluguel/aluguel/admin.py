@@ -15,5 +15,3 @@ class ImovelAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Imovel, ImovelAdmin)
-
-# Register your models here.
