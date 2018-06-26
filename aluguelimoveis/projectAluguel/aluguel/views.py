@@ -44,24 +44,24 @@ def busca_proximidade(request):
     if request.method == 'POST':
         form = EnderecoForm(request.POST)
         imoveis = Imovel.objects.filter(disponivel=True)
-        imoveisProximos = []
+        imoveis_proximos = []
 
         if form.is_valid():
             buscou = True
 
             endereco = form.cleaned_data['endereco']
-            gmaps = googlemaps.Client("AIzaSyCAvoQ71ulU2zlKfea1QfARc7aQlzVLCfo")
-            geocode = gmaps.geocode(endereco)
+            g_maps = googlemaps.Client("AIzaSyCAvoQ71ulU2zlKfea1QfARc7aQlzVLCfo")
+            geo_code = g_maps.geocode(endereco)
 
-            latitude = geocode[0]['geometry']['location']['lat']
-            longitude = geocode[0]['geometry']['location']['lng']
+            latitude = geo_code[0]['geometry']['location']['lat']
+            longitude = geo_code[0]['geometry']['location']['lng']
 
             for imovel in imoveis:
-                geocodeImovel = gmaps.geocode(imovel.endereco)
-                imovelLat = geocodeImovel[0]['geometry']['location']['lat']
-                imovelLon = geocodeImovel[0]['geometry']['location']['lng']
-                if((abs(latitude-imovelLat)< 0.1)and (abs(longitude-imovelLon)< 0.1)):
-                    imoveisProximos.append(imovel)
+                geo_code_imovel = g_maps.geocode(imovel.endereco)
+                imovel_latitude = geo_code_imovel[0]['geometry']['location']['lat']
+                imovel_longitude = geo_code_imovel[0]['geometry']['location']['lng']
+                if((abs(latitude-imovel_latitude)< 0.1)and (abs(longitude-imovel_longitude)< 0.1)):
+                    imoveis_proximos.append(imovel)
 
 
 
@@ -74,7 +74,7 @@ def busca_proximidade(request):
                                                          'categoria': categoria,
                                                          'proximidade': proximidade,
                                                          'endereco': endereco,
-                                                         'imoveisProximos':imoveisProximos,
+                                                         'imoveis_proximos':imoveis_proximos,
                                                          'buscou':buscou}
                   )
 
