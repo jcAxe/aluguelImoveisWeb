@@ -5,8 +5,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    url(r'^', include('projectbase.urls', namespace="projectbase")),
-    url(r'^aluguel/', include('aluguel.urls',namespace="aluguel")),
+    url(r'^', include('projectbase.urls', namespace='projectbase')),
+    url(r'^aluguel/', include('aluguel.urls',namespace='aluguel')),
     url(r'^admin/', admin.site.urls),
 ]
 
