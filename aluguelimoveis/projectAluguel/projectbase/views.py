@@ -14,7 +14,6 @@ def about(request):
     return render(request, 'projectbase/about.html')
 
 def registrar_imovel(request):
-    imovel = None
     if request.method == 'POST':
         form = ImovelForm(request.POST, request.FILES)
         if form.is_valid():
