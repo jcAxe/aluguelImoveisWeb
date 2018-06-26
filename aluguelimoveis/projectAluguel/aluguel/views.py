@@ -15,10 +15,13 @@ def lista_imoveis(request, slug_da_categoria=None):
         categoria = get_object_or_404(Categoria, slug=slug_da_categoria)
         imoveis = imoveis.filter(categoria=categoria)
 
-    return render(request, 'aluguel/imovel/lista.html', {'categorias': categorias,
-                                                         'imoveis': imoveis,
-                                                         'categoria': categoria,
-                                                         'proximidade': proximidade})
+    return render(request, 'aluguel/imovel/lista.html', {
+        'categorias': categorias,
+        'imoveis': imoveis,
+        'categoria': categoria,
+        'proximidade': proximidade,
+        })
+
 def lista_proximidade(request):
     categoria = None
     proximidade = True
@@ -27,12 +30,14 @@ def lista_proximidade(request):
     imoveis = Imovel.objects.filter(disponivel=True)
     form = EnderecoForm()
 
-    return render(request, 'aluguel/imovel/lista.html', {'categorias': categorias,
-                                                         'imoveis': imoveis,
-                                                         'categoria': categoria,
-                                                         'proximidade':proximidade,
-                                                         'endereco':endereco,
-                                                         'form':form})
+    return render(request, 'aluguel/imovel/lista.html', {
+        'categorias': categorias,
+        'imoveis': imoveis,
+        'categoria': categoria,
+        'proximidade':proximidade,
+        'endereco':endereco,
+        'form':form,
+        })
 
 def busca_proximidade(request):
     categoria = None
@@ -60,7 +65,8 @@ def busca_proximidade(request):
                 geo_code_imovel = g_maps.geocode(imovel.endereco)
                 imovel_latitude = geo_code_imovel[0]['geometry']['location']['lat']
                 imovel_longitude = geo_code_imovel[0]['geometry']['location']['lng']
-                if((abs(latitude-imovel_latitude)< 0.1)and (abs(longitude-imovel_longitude)< 0.1)):
+                if((abs(latitude-imovel_latitude)< 0.1)
+                   and (abs(longitude-imovel_longitude)< 0.1)):
                     imoveis_proximos.append(imovel)
 
 
@@ -68,27 +74,28 @@ def busca_proximidade(request):
     else:
         form = EnderecoForm()
 
-    return render(request, 'aluguel/imovel/lista.html', {'form': form,
-                                                         'categorias': categorias,
-                                                         'imoveis': imoveis,
-                                                         'categoria': categoria,
-                                                         'proximidade': proximidade,
-                                                         'endereco': endereco,
-                                                         'imoveis_proximos':imoveis_proximos,
-                                                         'buscou':buscou}
-                  )
+    return render(request, 'aluguel/imovel/lista.html', {
+        'form': form,
+        'categorias': categorias,
+        'imoveis': imoveis,
+        'categoria': categoria,
+        'proximidade': proximidade,
+        'endereco': endereco,
+        'imoveis_proximos':imoveis_proximos,
+        'buscou':buscou,
+        })
 
 
 
 def exibe_imovel(request, id, slug_do_imovel):
-    imovel = get_object_or_404(Imovel, id=id, slug=slug_do_imovel, disponivel=True)
-    return render(
-        request, 'aluguel/imovel/exibe.html', {'imovel': imovel})
+    imovel = get_object_or_404(Imovel, id=id,
+                               slug=slug_do_imovel, disponivel=True)
+    return render(request, 'aluguel/imovel/exibe.html', {'imovel': imovel})
 
 def sucesso_aluguel(request, id, slug_do_imovel):
     imovel = get_object_or_404(Imovel, id=id, slug=slug_do_imovel, disponivel=True)
     endereco = imovel.endereco
-    return render(
-        request, 'aluguel/imovel/sucessoAluguel.html', {'imovel': imovel,
-                                                        'endereco':endereco,
-                                                        })
+    return render(request, 'aluguel/imovel/sucessoAluguel.html', {
+        'imovel': imovel,
+        'endereco':endereco,
+        })

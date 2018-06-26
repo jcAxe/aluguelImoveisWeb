@@ -9,9 +9,22 @@ class CategoriaAdmin(admin.ModelAdmin):
 admin.site.register(Categoria, CategoriaAdmin)
 
 class ImovelAdmin(admin.ModelAdmin):
-    list_display = ['rua','id', 'slug','imagem', 'categoria', 'cep', 'preco', 'disponivel','endereco','descricao' ,'data_cadastramento', 'data_atualizacao']
-    list_filter = ['disponivel', 'data_cadastramento', 'categoria', 'cep']
-    list_editable = ['preco', 'descricao', 'imagem', 'disponivel','endereco']
+    list_display = [
+        'rua','id',
+        'slug','imagem',
+        'categoria', 'cep',
+        'preco', 'disponivel',
+        'endereco','descricao' ,
+        'data_cadastramento', 'data_atualizacao',
+    ]
+    list_filter = [
+        'disponivel', 'data_cadastramento',
+        'categoria', 'cep',
+    ]
+    list_editable = [
+        'preco', 'descricao', 'imagem',
+        'disponivel','endereco',
+    ]
     prepopulated_fields = {'slug': ('numero','rua','cep')}
     date_hierarchy = 'data_cadastramento'
 
