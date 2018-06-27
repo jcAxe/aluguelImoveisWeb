@@ -63,11 +63,28 @@ Lembrando de verificar o divisor de diretórios correspondente do seu sistema op
 
 ## Executando o projeto
 
+### Acesso a chaves
+
+Para que o projeto execute sem problemas, é necessária a criação de variáveis de ambiente para acessar as respectivas chaves secretas.
+
+As chaves necessárias são duas: Uma para o Django, outra para o cliente Google Maps.
+
+As variáveis de ambiente devem se chamar:
+
+*DJANGO_SECRET_KEY
+*GMAPS_KEY
+
+O valor destas variáveis deve ser fornecido externamente a este projeto.
+
+###Rodando o projeto
+
 Para rodar o projeto, é necessário executar o arquivo do projeto Django "manage.py". Para isso, execute a seguinte linha de comando a partir do diretório raiz do repositório:
 
 `python aluguelimoveis/projectAluguel/manage.py runserver`
 
 Este comando iniciará o servidor na máquina local com a porta 8000 como padrão. Assim, para acessar a página, abra o seu navegador e escreva: "localhost:8000" na barra de endereços.
+
+
 
 	
 ## Observação
