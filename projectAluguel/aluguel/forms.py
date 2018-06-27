@@ -9,4 +9,10 @@ class EnderecoForm(forms.Form):
 class ImovelForm(forms.ModelForm):
     class Meta:
         model = Imovel
-        fields = "__all__"
+        fields = (
+            'rua', 'id', 'numero',
+            'imagem', 'categoria',
+            'cep','preco',
+            'disponivel','endereco',
+            'descricao',
+        )

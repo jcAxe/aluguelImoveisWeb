@@ -14,7 +14,7 @@ admin.site.register(Categoria, CategoriaAdmin)
 
 class ImovelAdmin(admin.ModelAdmin):
     list_display = [
-        'rua', 'id',
+        'numero','rua', 'id',
         'slug', 'imagem',
         'categoria', 'cep',
         'preco', 'disponivel',
@@ -29,7 +29,7 @@ class ImovelAdmin(admin.ModelAdmin):
         'preco', 'descricao', 'imagem',
         'disponivel', 'endereco',
     ]
-    prepopulated_fields = {'slug': ('numero', 'rua', 'cep')}
+    prepopulated_fields = {'slug': ('numero', 'rua', 'cep',)}
     date_hierarchy = 'data_cadastramento'
 
 

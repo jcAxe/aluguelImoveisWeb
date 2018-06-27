@@ -24,7 +24,7 @@ class Categoria(models.Model):
 
 class Imovel(models.Model):
     categoria = models.ForeignKey(Categoria, related_name='imoveis')
-    slug = models.SlugField(max_length=200, db_index=True)
+    slug = models.SlugField(max_length=200, db_index=True, unique=True)
     imagem = models.ImageField(upload_to='aluguel/images/apts', blank=False)
     descricao = models.TextField(blank=True)
     dono = models.TextField(blank=True)
