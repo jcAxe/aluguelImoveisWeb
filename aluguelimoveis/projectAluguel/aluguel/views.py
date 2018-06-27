@@ -1,3 +1,5 @@
+import os
+
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 import googlemaps
@@ -59,8 +61,8 @@ def busca_proximidade(request):
         if form.is_valid():
             buscou = True
             endereco = form.cleaned_data['endereco']
-
-            g_maps = googlemaps.Client("AIzaSyCAvoQ71ulU2zlKfea1QfARc7aQlzVLCfo")
+            g_maps_key = os.getenv('GMAPS_KEY')
+            g_maps = googlemaps.Client(g_maps_key)
             geo_code = g_maps.geocode(endereco)
             latitude = geo_code[0]['geometry']['location']['lat']
             longitude = geo_code[0]['geometry']['location']['lng']
