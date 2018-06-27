@@ -17,7 +17,7 @@ class Categoria(models.Model):
         return self.nome
 
     def get_absolute_path(self):
-        return reverse('aluguel:lista_imoveis_por_categoria', args=[self.slug])
+        return reverse('aluguel: lista_imoveis_por_categoria', args=[self.slug])
 
 class Imovel(models.Model):
     categoria = models.ForeignKey(Categoria, related_name='imoveis')
@@ -47,7 +47,7 @@ class Imovel(models.Model):
         return self.data_cadastramento >= timezone.now() - datetime.timedelta(days=1)
 
     def get_absolute_path(self):
-        return reverse('aluguel:exibe_imovel', args=[self.id, self.slug])
+        return reverse('aluguel: exibe_imovel', args=[self.id, self.slug])
 
     def __str__(self):
         return self.endereco

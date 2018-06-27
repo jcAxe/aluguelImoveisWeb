@@ -35,9 +35,9 @@ def lista_proximidade(request):
         'categorias': categorias,
         'imoveis': imoveis,
         'categoria': categoria,
-        'proximidade':proximidade,
-        'endereco':endereco,
-        'form':form,
+        'proximidade': proximidade,
+        'endereco': endereco,
+        'form': form,
         })
 
 def busca_proximidade(request):
@@ -66,7 +66,7 @@ def busca_proximidade(request):
                 geo_code_imovel = g_maps.geocode(imovel.endereco)
                 imovel_latitude = geo_code_imovel[0]['geometry']['location']['lat']
                 imovel_longitude = geo_code_imovel[0]['geometry']['location']['lng']
-                if((abs(latitude-imovel_latitude)< 0.1)
+                if ((abs(latitude-imovel_latitude)< 0.1)
                    and (abs(longitude-imovel_longitude)< 0.1)):
                     imoveis_proximos.append(imovel)
 
@@ -82,8 +82,8 @@ def busca_proximidade(request):
         'categoria': categoria,
         'proximidade': proximidade,
         'endereco': endereco,
-        'imoveis_proximos':imoveis_proximos,
-        'buscou':buscou,
+        'imoveis_proximos': imoveis_proximos,
+        'buscou': buscou,
         })
 
 
