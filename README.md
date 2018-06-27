@@ -71,12 +71,12 @@ As chaves necessárias são duas: Uma para o Django, outra para o cliente Google
 
 As variáveis de ambiente devem se chamar:
 
-*DJANGO_SECRET_KEY
-*GMAPS_KEY
+* DJANGO_SECRET_KEY
+* GMAPS_KEY
 
 O valor destas variáveis deve ser fornecido externamente a este projeto.
 
-###Rodando o projeto
+### Rodando o projeto
 
 Para rodar o projeto, é necessário executar o arquivo do projeto Django "manage.py". Para isso, execute a seguinte linha de comando a partir do diretório raiz do repositório:
 
