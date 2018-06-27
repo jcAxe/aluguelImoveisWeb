@@ -12,6 +12,7 @@ def lista_imoveis(request, slug_da_categoria=None):
     proximidade = False
     categorias = Categoria.objects.all()
     imoveis = Imovel.objects.filter(disponivel=True)
+
     if slug_da_categoria:
         categoria = get_object_or_404(Categoria, slug=slug_da_categoria)
         imoveis = imoveis.filter(categoria=categoria)
@@ -22,6 +23,7 @@ def lista_imoveis(request, slug_da_categoria=None):
         'categoria': categoria,
         'proximidade': proximidade,
         })
+
 
 def lista_proximidade(request):
     categoria = None
@@ -40,6 +42,7 @@ def lista_proximidade(request):
         'form': form,
         })
 
+
 def busca_proximidade(request):
     categoria = None
     proximidade = True
@@ -47,6 +50,7 @@ def busca_proximidade(request):
     categorias = Categoria.objects.all()
     imoveis = Imovel.objects.filter(disponivel=True)
     buscou = False
+
     if request.method == 'POST':
         form = EnderecoForm(request.POST)
         imoveis = Imovel.objects.filter(disponivel=True)
@@ -54,11 +58,10 @@ def busca_proximidade(request):
 
         if form.is_valid():
             buscou = True
-
             endereco = form.cleaned_data['endereco']
+
             g_maps = googlemaps.Client("AIzaSyCAvoQ71ulU2zlKfea1QfARc7aQlzVLCfo")
             geo_code = g_maps.geocode(endereco)
-
             latitude = geo_code[0]['geometry']['location']['lat']
             longitude = geo_code[0]['geometry']['location']['lng']
 
@@ -66,11 +69,11 @@ def busca_proximidade(request):
                 geo_code_imovel = g_maps.geocode(imovel.endereco)
                 imovel_latitude = geo_code_imovel[0]['geometry']['location']['lat']
                 imovel_longitude = geo_code_imovel[0]['geometry']['location']['lng']
+
                 if ((abs(latitude-imovel_latitude)< 0.1)
-                   and (abs(longitude-imovel_longitude)< 0.1)):
+                    and (abs(longitude-imovel_longitude)< 0.1)):
+                    #Inside the square of 0.2 of side
                     imoveis_proximos.append(imovel)
-
-
 
     else:
         form = EnderecoForm()
@@ -87,15 +90,17 @@ def busca_proximidade(request):
         })
 
 
-
 def exibe_imovel(request, id, slug_do_imovel):
     imovel = get_object_or_404(Imovel, id=id,
                                slug=slug_do_imovel, disponivel=True)
+
     return render(request, 'aluguel/imovel/exibe.html', {'imovel': imovel})
+
 
 def sucesso_aluguel(request, id, slug_do_imovel):
     imovel = get_object_or_404(Imovel, id=id, slug=slug_do_imovel, disponivel=True)
     endereco = imovel.endereco
+
     return render(request, 'aluguel/imovel/sucessoAluguel.html', {
         'imovel': imovel,
         'endereco':endereco,

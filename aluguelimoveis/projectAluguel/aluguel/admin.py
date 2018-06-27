@@ -3,10 +3,14 @@ from django.contrib import admin
 from aluguel.models import Categoria
 from aluguel.models import Imovel
 
+
 class CategoriaAdmin(admin.ModelAdmin):
     list_display = ['nome', 'slug']
     prepopulated_fields = {'slug': ('nome',)}
+
+
 admin.site.register(Categoria, CategoriaAdmin)
+
 
 class ImovelAdmin(admin.ModelAdmin):
     list_display = [

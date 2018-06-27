@@ -83,10 +83,10 @@ USE_TZ = True
 
 ENV_PATH = os.path.abspath(os.path.dirname(__file__))
 
-
 USE_THOUSAND_SEPARATOR = True
 
 STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
+
 MEDIA_ROOT = os.path.join(ENV_PATH, 'media/')
