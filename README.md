@@ -55,6 +55,7 @@ O projeto foi realizado em Django com Python 3.6.2.
 
 É disponibilizado um arquivo requirements.txt para facilitar a instalação das dependências do projeto.
 Dito isto, com seu ambiente virtual ativado, a partir da pasta raiz do repositório, execute a seguinte linha de comando:
+
 `pip install -r aluguelimoveis/requirements.txt`
 
 Lembrando de verificar o divisor de diretórios correspondente do seu sistema operacional ('/' para o Linux, '\' Windows).
@@ -63,6 +64,7 @@ Lembrando de verificar o divisor de diretórios correspondente do seu sistema op
 ## Executando o projeto
 
 Para rodar o projeto, é necessário executar o arquivo do projeto Django "manage.py". Para isso, execute a seguinte linha de comando a partir do diretório raiz do repositório:
+
 `python aluguelimoveis/projectAluguel/manage.py runserver`
 
 Este comando iniciará o servidor na máquina local com a porta 8000 como padrão. Assim, para acessar a página, abra o seu navegador e escreva: "localhost:8000" na barra de endereços.
